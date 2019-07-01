@@ -1,0 +1,49 @@
+<?xml  version="1.0" encoding="UTF-8"  ?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<!--生成配置文件-->
+<generatorConfiguration>
+    <context id="DB2Tables" targetRuntime="Mybatis3">
+        <commentGenerator>
+            <!--是否去除注释，true表示是，false否-->
+            <property name="suppressAllComments" value="true"></property>
+        </commentGenerator>
+        <!--数据库连接信息-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql:///lethouse?characterEncoding=utf-8"
+                        userId="root"
+                        password="345mjt"
+        ></jdbcConnection>
+        <!--设置数据类型的转化
+            默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，
+            true时把JDBC DECIMAL 和    NUMERIC 类型解析为java.math.BigDecimal
+        -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"></property>
+        </javaTypeResolver>
+        <!--设置实体类配置
+            targetPackage:实体类的包名
+            targetProject：放在哪个项目包下
+        -->
+        <javaModelGenerator targetPackage="com.whhp.entity" targetProject=".\src\main\java">
+            <property name="enableSubPackages" value="true"></property>
+            <property name="trimStrings" value="true"></property>
+        </javaModelGenerator>
+        <!--sql映射文件配置-->
+        <sqlMapGenerator targetPackage="mapper" targetProject=".\src\main\resources">
+            <property name="enableSubPackages" value="true"></property>
+        </sqlMapGenerator>
+
+        <!--mapper接口配置-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.whhp.mapper" targetProject=".\src\main\java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!--数据库与实体映射-->
+      <!--  <table tableName="street" domainObjectName="Street"></table>
+        <table tableName="type" domainObjectName="Type"></table>-->
+        <table tableName="users" domainObjectName="Users"></table>
+    </context>
+</generatorConfiguration>
